@@ -1,0 +1,26 @@
+<h1>Edit Bookmark</h1>
+<%= partial(:_flash) %>
+<form action="/bookmarks/<%= @bookmark.id %>" method="post">
+	<fieldset>
+		<legend>Fill in the following details</legend>		
+		<div style="margin-bottom: 10px;">
+			<label><strong>Url</strong></label>
+			<a href="@bookmark.url"><%= @bookmark.url %></a>
+		</div>
+		<div style="margin-bottom: 10px;">
+			<label for="id_name"><strong>Name</strong></label>
+			<input id="id_name" name="name" type="text" value="<%= @bookmark.name %>" />    		
+		</div>
+		<div style="margin-bottom: 10px;">
+			<label for="id_notes"><strong>Notes</strong></label>
+			<textarea id="id_notes" name="notes" rows="3"><%= @bookmark.notes %></textarea>
+		</div>  
+		<div style="margin-bottom: 10px;">
+			<label><strong>Added On</strong></label>    
+			<%= @bookmark.added_on.strftime("%d %b %Y") %>
+		</div>              						
+	</fieldset>	
+  <div class="actions">
+  	<input type="submit", class="btn btn-primary" value="Save" />    
+  </div>
+</form>

@@ -1,0 +1,22 @@
+<h1>Edit Bookmark</h1>
+<%= partial(:_flash) %>
+<form action="/bookmarks/" method="post">
+	<fieldset>
+		<legend>Fill in the following details</legend>		
+		<div style="margin-bottom: 10px;">
+			<label for="id_url"><strong>Url</strong></label>
+			<input id="id_url" name="url" type="text" class="input-block-level" />
+		</div>
+		<div style="margin-bottom: 10px;">
+			<label for="id_name"><strong>Name</strong></label>
+			<input id="id_name" name="name" type="text" />    		
+		</div>
+		<div style="margin-bottom: 10px;">
+			<label for="id_notes"><strong>Notes</strong></label>
+			<textarea id="id_notes" name="notes" rows="3"></textarea>
+		</div>		              					
+	</fieldset>	
+  <div class="actions">
+  	<input type="submit", class="btn btn-primary" value="Add" />    
+  </div>
+</form>

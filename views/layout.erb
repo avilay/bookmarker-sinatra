@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bookmarker in the cloud</title>
+  <link rel="stylesheet" href="/css/bootstrap.css" type="text/css" media="screen" />
+  <link rel="stylesheet" href="/css/bootstrap-responsive.css" type="text/css" />
+  <link rel="stylesheet" href="/css/bookmarker.css" type="text/css" />
+  <link rel="shortcut icon" href="/img/favicon.ico">
+</head>
+<body>
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container-fluid">
+				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</a>
+				<a class="brand" href="#">Bookmarker</a>
+				<div class="nav-collapse collapse">
+					<% if session[:authenticated] %>
+						<p class="navbar-text pull-right">
+							<a href="/users/<%= @user.id %>" class="navbar-link"><%= @user.name %></a> |
+							<a href="/accounts/logout" class="navbar-link">Logout</a>						
+						</p>
+					<% else %>
+						<div class="navbar-text pull-right">
+							<form class="form-inline">
+								<input type="text" class="input-medium" style="font-size: small; height: 15px;" placeholder="Email">
+								<input type="password" class="input-medium" style="font-size: small; height: 15px;" placeholder="Password">						
+	  							<button type="submit" class="btn btn-small">Sign in</button>
+							</form>	
+						</div>
+					<% end %>
+					<ul class="nav">
+						<li class="<%= @home_active %>"><a href="/home/">Home</a></li>
+						<li class="<%= @bookmarks_active %>"><a href="/bookmarks/">My Bookmarks</a></li>
+						<li class="<%= @pop_bookmarks_active %>"><a href="/home/">Popular Bookmarks</a></li>
+					</ul>
+				</div><!--/.nav-collapse -->
+			</div>
+		</div>
+	</div>
+	
+	<div class="container">
+		<div class="row-fluid">
+			<div class="span8">
+				<%= yield %>							  
+			</div><!--/span-->
+			<div class="span4">
+				<% if @pinned_bookmarks %>
+				<div class="well">
+					<h3>Pinned</h3>
+					<table>
+						<% @pinned_bookmarks.each do |pinned_bookmark| %>
+							<tr><td><a href="<%= pinned_bookmark.url %>"><%= pinned_bookmark.name %></a></td></tr>							
+						<% end %>						                   
+					</table>
+				</div>
+				<% end %>
+			</div><!--/span-->
+		</div><!--/row-->
+		
+		<hr>
+		
+		<footer>
+			<ul id="footer">
+				<li><a href="/home/about/">About Me</a></li>
+				<li><a href="/home/contact/">Contact Me</a></li>
+				<li><a href="/home/tools/">Tools</a></li>				
+			</ul>
+		</footer>
+			
+	</div><!--/.fluid-container-->
+	
+</body>
+</html>

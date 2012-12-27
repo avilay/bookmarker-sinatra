@@ -1,0 +1,21 @@
+<h1>Login</h1>
+<%= partial(:_flash) %>
+<form class="form-horizontal" action="/login/" method="post">  
+  <div class="control-group">
+    <label class="control-label" for="id_email">Email</label>
+    <div class="controls">
+      <input type="text" id="id_email" name="email" />
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="id_password">Password</label>
+    <div class="controls">
+      <input type="password" id="id_password" name="password" />
+    </div>
+  </div>  
+  <div class="control-group">
+    <div class="controls">              
+      <button type="submit" class="btn">Login</button>
+    </div>
+  </div>
+</form> 

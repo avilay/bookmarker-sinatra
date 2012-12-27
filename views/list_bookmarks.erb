@@ -1,0 +1,26 @@
+<h1>My Bookmarks</h1>
+<%= partial(:_flash) %>
+<div style="padding-top: 5px; margin-bottom: 10px;">
+	<a href="/bookmarks/new/" class="btn btn-success">Add new bookmark</a>
+</div>
+<div>
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>Bookmark</th>
+				<th>Added On</th>
+				<th>&nbsp;</th>
+			</tr>
+		</thead>
+		<tbody>	
+		<% @bookmarks.each do |bookmark| %>
+			<tr>
+				<td><a href="<%= bookmark.url %>"><%= bookmark.name %></td>
+				<td><%= bookmark.added_on.strftime("%d %b %Y") %></td>
+				<td><a href="/bookmarks/<%= bookmark.id %>" class="muted">Details</td>						
+			</tr>
+		<% end %>
+		</tbody>
+	</table>
+</div>
+

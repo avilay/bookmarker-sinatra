@@ -1,0 +1,6 @@
+DELETE FROM bookmarks;
+DELETE FROM users;
+DELETE FROM web_pages;
+ALTER SEQUENCE users_id_seq RESTART WITH 1;
+ALTER SEQUENCE web_pages_id_seq RESTART WITH 1;
+ALTER SEQUENCE bookmarks_id_seq RESTART WITH 1;
